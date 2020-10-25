@@ -61,14 +61,39 @@ void heap_push(Heap* hip, void* data, int priority){
 }
 
 
-void heap_pop(Heap* pq){
+void heap_pop(Heap* hip){
+    if (hip==NULL || hip->heapArray==NULL) return;
+    if (hip->size==0 || hip->capac==0) return;
+    //case 1
+    if (hip->size== 1){
+      hip->heapArray[0].data= NULL;
+      hip->heapArray[0].priority= 0;
+      hip->size--;
+      return;
+    }
+    int posi= 0;
 
+    //FormulaHijos 2x+1 / 2x+2         StandBy (posi*2) +1 == (posi*2) +2
+    while ( (2*posi) + 1 <hip->size || (2*posi) +2 <hip->size ){ 
+      if ( (posi*2) +1 >= (posi*2) +2 ){
+        hip->heapArray[posi].priority= hip->heapArray[posi*2 +1].priority;
+        hip->heapArray[posi].data= hip->heapArray[posi*2 +1].data;
+        posi= (posi*2)+1;
+      }
+      else if ((2*posi) +2 > (posi*2) +1){
+        hip->heapArray[posi].priority= hip->heapArray[posi*2 +2].priority;
+        hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
+        posi= (posi*2)+2;
+      }
+    }
+    hip->size--;
+    return;
 }
 
 Heap* createHeap(){
-  Heap * nHeap= (Heap*) malloc (sizeof(Heap));
-  nHeap->heapArray= (heapElem*) malloc (3 * sizeof (heapElem));
-  nHeap->size= 0;
-  nHeap->capac= 3;
-   return nHeap;
+    Heap * nHeap= (Heap*) malloc (sizeof(Heap));
+    nHeap->heapArray= (heapElem*) malloc (3 * sizeof (heapElem));
+    nHeap->size= 0;
+    nHeap->capac= 3;
+    return nHeap;
 }
