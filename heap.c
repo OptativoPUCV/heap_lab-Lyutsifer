@@ -17,8 +17,10 @@ typedef struct Heap{
 } Heap;
 
 
-void* heap_top(Heap* pq){
-    return NULL;
+void* heap_top(Heap* arrai){
+    void * auxVar= arrai->heapArray[0].data;
+
+    return auxVar;
 }
 
 
