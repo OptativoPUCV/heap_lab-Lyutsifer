@@ -82,22 +82,23 @@ void heap_pop(Heap* hip){
       nodeAux->priority= hip->heapArray[posi].priority;
       nodeAux->data= hip->heapArray[posi].data;
 
-      if ( hip->heapArray[posi*2+1].priority >= hip->heapArray[posi*2+2].priority ){
- 
-        hip->heapArray[posi].priority= hip->heapArray[posi*2 +1].priority;
-        hip->heapArray[posi].data= hip->heapArray[posi*2 +1].data;
-        hip->heapArray[posi*2 +1].priority= nodeAux->priority;
-        hip->heapArray[posi*2 +1].data= nodeAux->data;
-        posi= (posi*2)+1;
+      if ( nodeAux->priority < hip->heapArray[posi*2+1].priority ){
+        if (nodeAux->priority < hip->heapArray[posi*2+1].priority ){
+          hip->heapArray[posi].priority= hip->heapArray[posi*2 +1].priority;
+          hip->heapArray[posi].data= hip->heapArray[posi*2 +1].data;
+          hip->heapArray[posi*2 +1].priority= nodeAux->priority;
+          hip->heapArray[posi*2 +1].data= nodeAux->data;
+          posi= (posi*2)+1;
+        }
       }
-      else if (hip->heapArray[posi*2+1].priority < hip->heapArray[posi*2+2].priority){
-        
-        hip->heapArray[posi].priority= hip->heapArray[posi*2 +2].priority;
-        hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
-        hip->heapArray[posi*2 +2].priority= nodeAux->priority;
-        hip->heapArray[posi*2 +2].data= nodeAux->data;
-        posi= (posi*2)+2;
+      else if ( nodeAux->priority < hip->heapArray[posi*2+2].priority ){
+          hip->heapArray[posi].priority= hip->heapArray[posi*2 +2].priority;
+          hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
+          hip->heapArray[posi*2 +2].priority= nodeAux->priority;
+          hip->heapArray[posi*2 +2].data= nodeAux->data;
+          posi= (posi*2)+2;
       }
+      else break;
     }
     return;
 }
