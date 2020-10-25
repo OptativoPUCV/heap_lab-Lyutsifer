@@ -62,8 +62,8 @@ void heap_push(Heap* hip, void* data, int priority){
 
 
 void heap_pop(Heap* hip){
-    if (hip==NULL || hip->heapArray==NULL) return;
-    if (hip->size==0 || hip->capac==0) return;
+    //if (hip==NULL || hip->heapArray==NULL) return;
+    //if (hip->size==0 || hip->capac==0) return;
     //case 1
     if (hip->size== 1){
       hip->heapArray[0].data= NULL;
