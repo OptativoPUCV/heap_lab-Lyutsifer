@@ -66,7 +66,7 @@ void heap_pop(Heap* hip){
     if (hip->size==0 || hip->capac==0) return;
     //case 1
     if (hip->size== 1){
-      hip->heapArray[0].data= NULL;
+      //hip->heapArray[0].data= NULL;
       //hip->heapArray[0].priority= -1;
       //free (&hip->heapArray[0]);
       hip->size--;
@@ -78,7 +78,7 @@ void heap_pop(Heap* hip){
 
     int posi= 0;
     //FormulaHijos 2x+1 / 2x+2         StandBy (posi*2) +1 == (posi*2) +2
-    while ( (2*posi) + 1 <hip->size-1 || (2*posi) +2 <hip->size-1 ){ 
+    while ( (2*posi) + 1 <hip->size || (2*posi) +2 <hip->size ){ 
 
       nodeAux->priority= hip->heapArray[posi].priority;
       nodeAux->data= hip->heapArray[posi].data;
