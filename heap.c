@@ -18,8 +18,8 @@ typedef struct Heap{
 
 
 void* heap_top(Heap* arrai){
+    if (arrai==NULL || arrai->heapArray==NULL) return NULL;
     void * auxVar= arrai->heapArray[0].data;
-
     return auxVar;
 }
 
