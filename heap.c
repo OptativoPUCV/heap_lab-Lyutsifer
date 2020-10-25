@@ -27,7 +27,7 @@ void* heap_top(Heap* hip){
 
 
 void heap_push(Heap* hip, void* data, int priority){
-/*
+  
   if (hip== NULL || hip->heapArray== NULL || hip->capac== 0 || data== NULL) return;
   if (hip->capac == hip->size){
     hip->heapArray= (heapElem*) realloc (hip->heapArray , hip->capac * 2+1*sizeof(heapElem) );
@@ -56,7 +56,7 @@ void heap_push(Heap* hip, void* data, int priority){
     if (posi<=0 ) break;
     auxPrio2= hip->heapArray[(posi - 1)/2].priority;
      
-  }*/
+  }
   return;
 }
 
