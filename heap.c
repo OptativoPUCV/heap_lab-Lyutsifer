@@ -72,7 +72,7 @@ void heap_pop(Heap* hip){
       hip->size--;
       return;
     }
-    switchNode(hip);
+    //switchNode(hip);
     heapElem * nodeAux= (heapElem*) malloc (sizeof(heapElem));
 
     int posi= 0;
