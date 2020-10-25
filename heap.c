@@ -73,7 +73,6 @@ void heap_pop(Heap* hip){
       return;
     }
     switchNode(hip);
-    hip->size--;
     heapElem * nodeAux= (heapElem*) malloc (sizeof(heapElem));
 
     int posi= 0;
@@ -117,5 +116,6 @@ void switchNode(Heap * hip){
   nodeAux->priority= hip->heapArray[0].priority;
   hip->heapArray[hip->size-1].priority= nodeAux->priority;
   hip->heapArray[hip->size-1].data= nodeAux->data;
+  hip->size--;
   return;
 }
