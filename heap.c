@@ -66,9 +66,9 @@ void heap_pop(Heap* hip){
     if (hip->size==0 || hip->capac==0) return;
     //case 1
     if (hip->size== 1){
-      //hip->heapArray[0].data= NULL;
+      hip->heapArray[0].data= NULL;
       //hip->heapArray[0].priority= -1;
-      free (&hip->heapArray[0]);
+      //free (&hip->heapArray[0]);
       hip->size--;
       return;
     }
@@ -89,7 +89,7 @@ void heap_pop(Heap* hip){
         hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
         //hip->heapArray[posi*2 +2].priority= -1;
         hip->heapArray[posi*2 +2].data= NULL;
-        free (&hip->heapArray[posi*2 +2].priority);
+        //free (&hip->heapArray[posi*2 +2].priority);
         posi= (posi*2)+2;
       }
     }

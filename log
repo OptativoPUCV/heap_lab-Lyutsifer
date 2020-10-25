@@ -172,3 +172,9 @@ free(): invalid pointer
  tests:  0|0
 free(): invalid pointer
 c2c434e
+Sun Oct 25 22:22:04 UTC 2020: 
+ heap.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests:  7|1
+total_score: 50/70
+4776b13
