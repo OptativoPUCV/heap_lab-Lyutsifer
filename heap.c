@@ -35,6 +35,7 @@ void heap_push(Heap* arrai, void* data, int priority){
   int posi= arrai->size-1;
   arrai->heapArray[posi].priority= priority;
   arrai->heapArray[posi].data= data;
+  if (posi<= 0 || (posi-1)/2 ) return;
   int auxPrio2= arrai->heapArray[(posi - 1)/2].priority;
 
   while (priority > auxPrio2){
@@ -50,7 +51,7 @@ void heap_push(Heap* arrai, void* data, int priority){
     arrai->heapArray[(posi)].data = auxNodo->data;
     //Nueva posicion del nodo
     posi= (posi-1) / 2;
-    if (posi<0 || (posi-1 /2) < 0) break;
+    if (posi<=0 || (posi-1 /2) < 0 ) break;
     auxPrio2= arrai->heapArray[(posi - 1)/2].priority;
      
   }
