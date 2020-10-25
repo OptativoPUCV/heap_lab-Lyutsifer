@@ -164,3 +164,11 @@ Sun Oct 25 22:19:04 UTC 2020:
  1 file changed, 7 insertions(+), 4 deletions(-)
  tests:  0|0
 c7c68cc
+Sun Oct 25 22:20:11 UTC 2020: 
+ heap.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+free(): invalid pointer
+free(): invalid pointer
+ tests:  0|0
+free(): invalid pointer
+c2c434e
