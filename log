@@ -178,3 +178,11 @@ Sun Oct 25 22:22:04 UTC 2020:
  tests:  7|1
 total_score: 50/70
 4776b13
+Sun Oct 25 22:24:36 UTC 2020: 
+ heap.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+free(): invalid pointer
+free(): invalid pointer
+ tests:  0|0
+free(): invalid pointer
+cba6900

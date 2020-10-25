@@ -76,18 +76,21 @@ void heap_pop(Heap* hip){
 
     //FormulaHijos 2x+1 / 2x+2         StandBy (posi*2) +1 == (posi*2) +2
     while ( (2*posi) + 1 <hip->size || (2*posi) +2 <hip->size ){ 
+
       if ( hip->heapArray[posi*2+1].priority >= hip->heapArray[posi*2+2].priority ){
+
         hip->heapArray[posi].priority= hip->heapArray[posi*2 +1].priority;
         hip->heapArray[posi].data= hip->heapArray[posi*2 +1].data;
-        //hip->heapArray[posi*2 +1].priority= -1;
+        hip->heapArray[posi*2 +1].priority= -1;
         hip->heapArray[posi*2 +1].data= NULL;
         free (&hip->heapArray[posi*2 +1].priority);
         posi= (posi*2)+1;
       }
       else if (hip->heapArray[posi*2+1].priority < hip->heapArray[posi*2+2].priority){
+
         hip->heapArray[posi].priority= hip->heapArray[posi*2 +2].priority;
         hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
-        //hip->heapArray[posi*2 +2].priority= -1;
+        hip->heapArray[posi*2 +2].priority= -1;
         hip->heapArray[posi*2 +2].data= NULL;
         //free (&hip->heapArray[posi*2 +2].priority);
         posi= (posi*2)+2;
