@@ -19,7 +19,7 @@ typedef struct Heap{
 
 void* heap_top(Heap* arrai){
     fflush (stdin);
-    if (arrai==NULL || arrai->heapArray==NULL || arrai->heapArray[0].data == NULL) return NULL;
+    if (arrai==NULL || arrai->heapArray==NULL || arrai->size == 0) return NULL;
     void * auxVar= arrai->heapArray[0].data;
     return auxVar;
 }
