@@ -62,8 +62,8 @@ void heap_push(Heap* hip, void* data, int priority){
 
 
 void heap_pop(Heap* hip){
-    //if (hip==NULL || hip->heapArray==NULL) return;
-    //if (hip->size==0 || hip->capac==0) return;
+    if (hip==NULL || hip->heapArray==NULL) return;
+    if (hip->size==0 || hip->capac==0) return;
     //case 1
     if (hip->size== 1){
       hip->heapArray[0].data= NULL;
@@ -72,31 +72,34 @@ void heap_pop(Heap* hip){
       hip->size--;
       return;
     }
-    int posi= 0;
+    switchNode(hip);
+    hip->size--;
+    heapElem * nodeAux= (heapElem*) malloc (sizeof(heapElem));
 
+    int posi= 0;
     //FormulaHijos 2x+1 / 2x+2         StandBy (posi*2) +1 == (posi*2) +2
     while ( (2*posi) + 1 <hip->size || (2*posi) +2 <hip->size ){ 
 
-      if ( hip->heapArray[posi*2+1].priority >= hip->heapArray[posi*2+2].priority ){
+      nodeAux->priority= hip->heapArray[posi].priority;
+      nodeAux->data= hip->heapArray[posi].data;
 
+      if ( hip->heapArray[posi*2+1].priority >= hip->heapArray[posi*2+2].priority ){
+ 
         hip->heapArray[posi].priority= hip->heapArray[posi*2 +1].priority;
         hip->heapArray[posi].data= hip->heapArray[posi*2 +1].data;
-        hip->heapArray[posi*2 +1].priority= -1;
-        hip->heapArray[posi*2 +1].data= NULL;
-        //free (&hip->heapArray[posi*2 +1].priority);
+        hip->heapArray[posi*2 +1].priority= nodeAux->priority;
+        hip->heapArray[posi*2 +1].data= nodeAux->data;
         posi= (posi*2)+1;
       }
       else if (hip->heapArray[posi*2+1].priority < hip->heapArray[posi*2+2].priority){
-
+        
         hip->heapArray[posi].priority= hip->heapArray[posi*2 +2].priority;
         hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
-        hip->heapArray[posi*2 +2].priority= -1;
-        hip->heapArray[posi*2 +2].data= NULL;
-        //free (&hip->heapArray[posi*2 +2].priority);
+        hip->heapArray[posi*2 +2].priority= nodeAux->priority;
+        hip->heapArray[posi*2 +2].data= nodeAux->data;
         posi= (posi*2)+2;
       }
     }
-    hip->size--;
     return;
 }
 
@@ -106,4 +109,13 @@ Heap* createHeap(){
     nHeap->size= 0;
     nHeap->capac= 3;
     return nHeap;
+}
+
+void switchNode(Heap * hip){
+  heapElem * nodeAux= (heapElem*) malloc (sizeof(heapElem));
+  nodeAux->data= hip->heapArray[0].data;
+  nodeAux->priority= hip->heapArray[0].priority;
+  hip->heapArray[hip->size-1].priority= nodeAux->priority;
+  hip->heapArray[hip->size-1].data= nodeAux->data;
+  return;
 }
