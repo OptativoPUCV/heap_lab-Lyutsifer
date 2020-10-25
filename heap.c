@@ -72,17 +72,19 @@ void heap_pop(Heap* hip){
       hip->size--;
       return;
     }
-    //switchNode(hip);
+    switchNode(hip);
     heapElem * nodeAux= (heapElem*) malloc (sizeof(heapElem));
 
     int posi= 0;
     //FormulaHijos 2x+1 / 2x+2         StandBy (posi*2) +1 == (posi*2) +2
-    while ( (2*posi) + 1 <hip->size || (2*posi) +2 <hip->size ){ 
+    // (2*posi) + 1 < hip->size || (2*posi) + 2 < hip->size )
+    while ( posi< hip->size){ 
 
       nodeAux->priority= hip->heapArray[posi].priority;
       nodeAux->data= hip->heapArray[posi].data;
 
       if ( nodeAux->priority < hip->heapArray[posi*2+1].priority ){
+
           hip->heapArray[posi].priority= hip->heapArray[posi*2 +1].priority;
           hip->heapArray[posi].data= hip->heapArray[posi*2 +1].data;
           hip->heapArray[posi*2 +1].priority= nodeAux->priority;
@@ -90,6 +92,7 @@ void heap_pop(Heap* hip){
           posi= (posi*2)+1;
       }
       else if ( nodeAux->priority < hip->heapArray[posi*2+2].priority ){
+
           hip->heapArray[posi].priority= hip->heapArray[posi*2 +2].priority;
           hip->heapArray[posi].data= hip->heapArray[posi*2 +2].data;
           hip->heapArray[posi*2 +2].priority= nodeAux->priority;
