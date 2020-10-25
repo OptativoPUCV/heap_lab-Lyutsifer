@@ -186,3 +186,9 @@ free(): invalid pointer
  tests:  0|0
 free(): invalid pointer
 cba6900
+Sun Oct 25 22:24:50 UTC 2020: 
+ heap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  7|1
+total_score: 60/70
+5c37ac2
