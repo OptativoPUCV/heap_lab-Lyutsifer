@@ -26,8 +26,14 @@ void* heap_top(Heap* arrai){
 
 
 
-void heap_push(Heap* pq, void* data, int priority){
-
+void heap_push(Heap* arrai, void* data, int priority){
+  if (arrai== NULL || arrai->heapArray== NULL || arrai->capac== 0 || data== NULL) return;
+  if (arrai->capac == arrai->size){
+    arrai->heapArray= (heapElem*) realloc (arrai->heapArray , arrai->capac * 2 *sizeof(heapElem) );
+  }
+  arrai->heapArray[arrai->size-1].priority= priority;
+  arrai->heapArray[arrai->size-1].data= data;
+  
 }
 
 
