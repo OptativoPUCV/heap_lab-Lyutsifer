@@ -30,8 +30,8 @@ void heap_push(Heap* hip, void* data, int priority){
 
   if (hip== NULL || hip->heapArray== NULL || hip->capac== 0 || data== NULL) return;
   if (hip->capac == hip->size){
-    hip->heapArray= (heapElem*) realloc (hip->heapArray , hip->capac * 2 *sizeof(heapElem) );
-    hip->capac*= 2;
+    hip->heapArray= (heapElem*) realloc (hip->heapArray , hip->capac * 2+1*sizeof(heapElem) );
+    hip->capac*= 2; hip->capac++;
   }
   int posi= hip->size;
   hip->heapArray[posi].priority= priority;
