@@ -69,7 +69,7 @@ void heap_pop(Heap* hip){
       hip->size--;
       return;
     }
-    
+
     hip->heapArray[0].priority= hip->heapArray[hip->size-1].priority;
     hip->heapArray[0].data = hip->heapArray[hip->size-1].data;
   
@@ -113,18 +113,3 @@ Heap* createHeap(){
     nHeap->capac= 3;
     return nHeap;
 }
-
-/*void switchNode(Heap * hip){
-  heapElem * nodeAux= (heapElem*) malloc (sizeof(heapElem));
-  nodeAux->data= hip->heapArray[0].data;
-  nodeAux->priority= hip->heapArray[0].priority;
-
-  hip->heapArray[0].priority= hip->heapArray[hip->size-1].priority;
-  hip->heapArray[0].data = hip->heapArray[hip->size-1].data;
-  
-  hip->heapArray[hip->size-1].priority= nodeAux->priority;
-  hip->heapArray[hip->size-1].data= nodeAux->data;
-
-  hip->size--;
-  return;
-}*/

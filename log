@@ -276,3 +276,9 @@ Mon Oct 26 00:18:11 UTC 2020:
  tests:  8|0
 total_score: 70/70
 2005f2c
+Mon Oct 26 00:19:00 UTC 2020: 
+ heap.c | 15 ---------------
+ 1 file changed, 15 deletions(-)
+ tests:  8|0
+total_score: 70/70
+e47c727
